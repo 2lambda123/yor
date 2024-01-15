@@ -10,6 +10,11 @@ fi
 
 flags=""
 
+# Function for logging errors
+log_error() {
+  echo "Error: $1" >&2
+}
+
 # Actions pass inputs as $INPUT_<input name> environment variables
 [[ -n "$INPUT_TAG_GROUPS" ]] && flags="$flags--tag-groups $INPUT_TAG_GROUPS "
 [[ -n "$INPUT_TAG" ]] && flags="$flags--tag $INPUT_TAG "
