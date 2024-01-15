@@ -44,6 +44,7 @@ then
         --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" ;
     echo "Changes committed, pushing..."
     git push origin
+    exit 0
   fi
 else
   echo "::debug::exiting, yor failed or commit is skipped"
