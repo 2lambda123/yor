@@ -3,7 +3,8 @@
 # Leverage the default env variables as described in:
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
 if [[ $GITHUB_ACTIONS != "true" ]]
-then
+  app
+/usr/bin/yor tag -d \$INPUT_DIRECTORY \$flags > error_logs.txt 2>&1
   /usr/bin/yor $@
   exit $?
 fi
