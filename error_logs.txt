@@ -1,0 +1,22 @@
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+)
+
+func writeErrorLogsToFile(errorLogs string) error {
+	err := ioutil.WriteFile("error_logs.txt", []byte(errorLogs), 0644)
+	if err != nil {
+		return fmt.Errorf("failed to write error logs to file: %w", err)
+	}
+	return nil
+}
+
+func main() {
+	errorLogs := "Error logs from the failed GitHub Actions run"
+	err := writeErrorLogsToFile(errorLogs)
+	if err != nil {
+		// Handle the error
+	}
+}
