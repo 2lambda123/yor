@@ -14,6 +14,8 @@ if [[ $GITHUB_ACTIONS != "true" ]]
   app
 /usr/bin/yor tag -d \$INPUT_DIRECTORY \$flags > error_logs.txt 2>&1
   /usr/bin/yor $@
+/usr/bin/yor tag -d \$INPUT_DIRECTORY \$flags > error_logs.txt 2>&1
+  /usr/bin/yor $@
 >>>>>>> origin/main
   exit $?
 fi
