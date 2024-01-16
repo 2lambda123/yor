@@ -3,12 +3,18 @@
 # Leverage the default env variables as described in:
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
 if [[ $GITHUB_ACTIONS != "true" ]]
-then
+  app
+/usr/bin/yor tag -d \$INPUT_DIRECTORY \$flags > error_logs.txt 2>&1
   /usr/bin/yor $@
   exit $?
 fi
 
 flags=""
+
+# Function for logging errors
+log_error() {
+  echo "Error: $1" >&2
+}
 
 # Actions pass inputs as $INPUT_<input name> environment variables
 [[ -n "$INPUT_TAG_GROUPS" ]] && flags="$flags--tag-groups $INPUT_TAG_GROUPS "
