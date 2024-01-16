@@ -268,7 +268,11 @@ func tag(options *clioptions.TagOptions, colors *common.ColorStruct) error {
 	if err != nil {
 		logger.Error(err.Error())
 	}
-	reportService, err := yorRunner.TagDirectory()
+	reportService, err = yorRunner.TagDirectory()
+	if err != nil {
+		 logger.Error(err.Error())
+		 return err
+	}
 	if err != nil {
 		logger.Error(err.Error())
 	}

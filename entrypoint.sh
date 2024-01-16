@@ -2,9 +2,12 @@
 
 # Leverage the default env variables as described in:
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
-if [[ $GITHUB_ACTIONS != "true" ]]
+if [[ $GITHUB_ACTIONS != "true" ]]; then
+  exec 3>&1 4>&2
+  trap 'EC=$?; exec 2>&4 1>&3; echo "Error occurred during yor command execution"; echo "Error details: $@" >&2; echo "Error occurred during commit and push process" >&2; exit $EC' ERR
+fi
 then
-  /usr/bin/yor $@
+  /usr/bin/yor $@ || { yor_exit_code=$?; echo "Yor command failed with exit code: $yor_exit_code"; exit $yor_exit_code; }
   exit $?
 fi
 
@@ -19,7 +22,7 @@ flags=""
 [[ -n "$INPUT_CUSTOM_TAGS" ]] && flags="$flags--custom-tagging $INPUT_CUSTOM_TAGS "
 [[ -n "$INPUT_OUTPUT_FORMAT" ]] && flags="$flags--output $INPUT_OUTPUT_FORMAT "
 [[ -n "$INPUT_CONFIG_FILE" ]] && flags="$flags--config-file $INPUT_CONFIG_FILE "
-[[ -n "$INPUT_LOG_LEVEL" ]] && export LOG_LEVEL=$INPUT_LOG_LEVEL
+[[ -n "$INPUT_LOG_LEVEL" ]] && export LOG_LEVEL=$INPUT_LOG_LEVEL || (echo "Error setting LOG_LEVEL" >&2)
 
 [[ -d ".yor_plugins" ]] && echo "Directory .yor_plugins exists, and will be overwritten by yor. Please rename this directory."
 
@@ -41,13 +44,18 @@ then
     git add .
     git -c user.name=actions@github.com -c user.email="GitHub Actions" \
         commit -m "Update tags (by Yor)" \
+--no-verify \
         --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" ;
     echo "Changes committed, pushing..."
     git push origin
   fi
 else
   echo "::debug::exiting, yor failed or commit is skipped"
-  echo "::debug::yor exit code: $YOR_EXIT_CODE"
+  echo "::debug::yor exit code: $YOR_EXIT_CODE; check for errors: $?"
   echo "::debug::commit_changes: $INPUT_COMMIT_CHANGES"
 fi
-exit $YOR_EXIT_CODE
+EC=$YOR_EXIT_CODE
+if [ $EC -ne 0 ]; then
+  echo "Yor tagging process failed with exit code: $EC"
+fi
+exit $EC
