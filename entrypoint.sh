@@ -4,10 +4,10 @@
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
 if [[ $GITHUB_ACTIONS != "true" ]]; then
   exec 3>&1 4>&2
-  trap 'EC=$?; exec 2>&4 1>&3; echo "Error occurred during GitHub Actions run"; echo "Error details: $@"; exit $EC' ERR
+  trap 'EC=$?; exec 2>&4 1>&3; echo "Error occurred during yor command execution"; echo "Error details: $@" >&2; echo "Error occurred during commit and push process" >&2; exit $EC' ERR
 fi
 then
-  /usr/bin/yor $@
+  /usr/bin/yor $@ || { yor_exit_code=$?; echo "Yor command failed with exit code: $yor_exit_code"; exit $yor_exit_code; }
   exit $?
 fi
 
@@ -44,6 +44,7 @@ then
     git add .
     git -c user.name=actions@github.com -c user.email="GitHub Actions" \
         commit -m "Update tags (by Yor)" \
+--no-verify \
         --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" ;
     echo "Changes committed, pushing..."
     git push origin
