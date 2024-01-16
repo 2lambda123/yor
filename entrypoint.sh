@@ -2,16 +2,28 @@
 
 # Leverage the default env variables as described in:
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
+<<<<<<< HEAD
 if [[ $GITHUB_ACTIONS != "true" ]]; then
   exec 3>&1 4>&2
   trap 'EC=$?; exec 2>&4 1>&3; echo "Error occurred during yor command execution"; echo "Error details: $@" >&2; echo "Error occurred during commit and push process" >&2; exit $EC' ERR
 fi
 then
   /usr/bin/yor $@ || { yor_exit_code=$?; echo "Yor command failed with exit code: $yor_exit_code"; exit $yor_exit_code; }
+=======
+if [[ $GITHUB_ACTIONS != "true" ]]
+  app
+/usr/bin/yor tag -d \$INPUT_DIRECTORY \$flags > error_logs.txt 2>&1
+  /usr/bin/yor $@
+>>>>>>> origin/main
   exit $?
 fi
 
 flags=""
+
+# Function for logging errors
+log_error() {
+  echo "Error: $1" >&2
+}
 
 # Actions pass inputs as $INPUT_<input name> environment variables
 [[ -n "$INPUT_TAG_GROUPS" ]] && flags="$flags--tag-groups $INPUT_TAG_GROUPS "
@@ -48,6 +60,7 @@ then
         --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" ;
     echo "Changes committed, pushing..."
     git push origin
+    exit 0
   fi
 else
   echo "::debug::exiting, yor failed or commit is skipped"

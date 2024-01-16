@@ -18,6 +18,8 @@ import (
 )
 
 func main() {
+	// Add error handling
+	// Add error handling
 	app := &cli.App{
 		Name:                   "yor",
 		HelpName:               "",
