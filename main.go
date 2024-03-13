@@ -124,7 +124,7 @@ func tagCommand() *cli.Command {
 
 			options.Validate()
 
-                        colors := common.NoColorCheck(options.NoColor)
+			colors := common.NoColorCheck(options.NoColor)
 			return tag(&options, colors)
 		},
 		Flags: []cli.Flag{ // When adding flags, make sure they are supported in the GitHub action as well via entrypoint.sh
@@ -272,8 +272,8 @@ func tag(options *clioptions.TagOptions, colors *common.ColorStruct) error {
 	}
 	reportService, err = yorRunner.TagDirectory()
 	if err != nil {
-		 logger.Error(err.Error())
-		 return err
+		logger.Error(err.Error())
+		return err
 	}
 	if err != nil {
 		logger.Error(err.Error())
