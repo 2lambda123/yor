@@ -10,7 +10,7 @@ repos:
 #        types: [terraform]
 #        pass_filenames: false
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
       - id: check-merge-conflict
       - id: trailing-whitespace
@@ -19,7 +19,7 @@ repos:
       - id: detect-aws-credentials
       - id: detect-private-key
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.3.1
+    rev: v1.5.5
     hooks:
       - id: forbid-tabs
         exclude_types: [ python, javascript, dtd, markdown, makefile, xml ]
@@ -29,23 +29,23 @@ repos:
     hooks:
       - id: shell-lint
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 2.2.239
+    rev: 3.2.74
     hooks:
       - id: checkov
         verbose: true
         entry: checkov -d . --framework dockerfile github_actions json yaml sca_package sca_image secrets
   - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.17
+    rev: v0.1.23
     hooks:
     - id: gofmt
     - id: goimports
     - id: golint
   - repo: https://github.com/golangci/golangci-lint
-    rev: v1.50.1
+    rev: v1.57.2
     hooks:
     - id: golangci-lint
   - repo: https://github.com/syntaqx/git-hooks
-    rev: v0.0.17
+    rev: v0.0.18
     hooks:
     - id: go-test
       args: [ "./src/..." ]
