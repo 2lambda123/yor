@@ -29,7 +29,7 @@ repos:
     hooks:
       - id: shell-lint
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.74
+    rev: 3.2.144
     hooks:
       - id: checkov
         verbose: true
@@ -41,7 +41,7 @@ repos:
     - id: goimports
     - id: golint
   - repo: https://github.com/golangci/golangci-lint
-    rev: v1.57.2
+    rev: v1.59.1
     hooks:
     - id: golangci-lint
   - repo: https://github.com/syntaqx/git-hooks
