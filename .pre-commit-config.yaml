@@ -29,13 +29,13 @@ repos:
     hooks:
       - id: shell-lint
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.325
+    rev: 3.2.336
     hooks:
       - id: checkov
         verbose: true
         entry: checkov -d . --framework dockerfile github_actions json yaml sca_package sca_image secrets
   - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.24
+    rev: v0.1.25
     hooks:
     - id: gofmt
     - id: goimports
