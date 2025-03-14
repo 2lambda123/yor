@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/awslabs/goformation/v5 v5.2.7
 	github.com/bridgecrewio/goformation/v5 v5.0.0-20210823083242-84a6d242099f
-	github.com/go-git/go-git/v5 v5.11.0
+	github.com/go-git/go-git/v5 v5.13.0
 	github.com/google/uuid v1.3.0
 	github.com/hashicorp/go-hclog v1.6.3
 	github.com/hashicorp/go-version v1.6.0
@@ -17,7 +17,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pmezard/go-difflib v1.0.0
 	github.com/sanathkr/yaml v1.0.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.10.0
 	github.com/urfave/cli/v2 v2.3.0
 	github.com/zclconf/go-cty v1.12.1
 	go.opencensus.io v0.24.0
@@ -45,7 +45,7 @@ require (
 	github.com/Azure/go-ntlmssp v0.0.0-20180810175552-4a21cbd618b4 // indirect
 	github.com/ChrisTrenkamp/goxpath v0.0.0-20170922090931-c385f95c6022 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
-	github.com/ProtonMail/go-crypto v0.0.0-20230828082145-3c4c8a2d2371 // indirect
+	github.com/ProtonMail/go-crypto v1.1.3 // indirect
 	github.com/Unknwon/com v0.0.0-20151008135407-28b053d5a292 // indirect
 	github.com/agext/levenshtein v1.2.2 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20190808125512-07798873deee // indirect
@@ -68,7 +68,7 @@ require (
 	github.com/coreos/etcd v3.3.10+incompatible // indirect
 	github.com/coreos/go-semver v0.2.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d // indirect
-	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
+	github.com/cyphar/filepath-securejoin v0.2.5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dimchansky/utfbom v1.1.0 // indirect
 	github.com/dnaeon/go-vcr v1.0.1 // indirect
@@ -78,7 +78,7 @@ require (
 	github.com/form3tech-oss/jwt-go v3.2.2+incompatible // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
-	github.com/go-git/go-billy/v5 v5.5.0 // indirect
+	github.com/go-git/go-billy/v5 v5.6.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
@@ -150,9 +150,9 @@ require (
 	github.com/russross/blackfriday/v2 v2.0.1 // indirect
 	github.com/sanathkr/go-yaml v0.0.0-20170819195128-ed9d249f429b // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
-	github.com/sergi/go-diff v1.1.0 // indirect
+	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
-	github.com/skeema/knownhosts v1.2.1 // indirect
+	github.com/skeema/knownhosts v1.3.0 // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/svanharmelen/jsonapi v0.0.0-20180618144545-0c0828c3f16d // indirect
 	github.com/tencentcloud/tencentcloud-sdk-go v3.0.82+incompatible // indirect
